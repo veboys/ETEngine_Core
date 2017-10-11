@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;NETCOREAPP2_0;RELEASE;NETCOREAPP2_0;RELEASE;NETCOREAPP2_0</DefineConstants>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Server.Base\Server.Base.csproj" />
+    <ProjectReference Include="..\Server.Hotfix\Server.Hotfix.csproj" />
+    <ProjectReference Include="..\Server.Model\Server.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Config\BuffConfig.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\StartConfig\127.0.0.1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\StartConfig\192.168.12.112.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\StartConfig\192.168.9.182.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\StartConfig\Benchmark.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\StartConfig\Benchmark127.0.0.1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\StartConfig\ClientConfig.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\StartConfig\LocalAllServer.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ENetSource1 Include="$(ProjectDir)..\ThirdParty\ENet\*.*;" />
+    <ENetSource2 Include="$(ProjectDir)..\ThirdParty\ENet\enet\*.*;" />
+  </ItemGroup>
+  
+  <Target Name="CopyBuildResults" AfterTargets="AfterBuild">
+    <Copy SourceFiles="@(ENetSource1)" DestinationFolder="$(ProjectDir)..\..\Bin\ENet" />
+    <Copy SourceFiles="@(ENetSource2)" DestinationFolder="$(ProjectDir)..\..\Bin\ENet\enet" />
+  </Target>
+
+</Project>

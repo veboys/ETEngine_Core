@@ -1,8 +1,11 @@
-Server/Server.App/obj/
-Server/Server.Base/obj/
 Server/Server.App/bin/
-Server/Server.Hotfix/obj/
-Server/Server.Hotfix/bin/
+Server/Server.App/obj/
 Server/Server.Base/bin/
-Server/Server.Model/obj/
+Server/Server.Base/obj/
+Server/Server.Hotfix/bin/
+Server/Server.Hotfix/obj/
 Server/Server.Model/bin/
+Server/Server.Model/obj/
+Server/x64/
+Server/ThirdParty/ENet/x64/
+Temp/
